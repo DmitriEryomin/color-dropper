@@ -1,0 +1,32 @@
+#upload-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+#upload-image-input input {
+  display: none;
+}
+
+#upload-image-input label {
+  margin-top: 1rem;
+  display: block;
+  cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+  #upload-image {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.1)
+    );
+  }
+}

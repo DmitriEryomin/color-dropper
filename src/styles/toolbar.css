@@ -1,0 +1,50 @@
+.toolbar {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-dropper,
+.toolbar-upload_image {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.toolbar-dropper.toggle-mode {
+  background-color: #646cff;
+}
+
+.toolbar-dropper img,
+.toolbar-upload_image img {
+  filter: invert(1);
+}
+
+.toolbar-upload_image {
+  line-height: 2.5rem;
+  margin-right: auto;
+}
+
+.toolbar-upload_image input {
+  display: none;
+}
+
+.toolbar-color_box {
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: black;
+}
+
+.toolbar-color_value {
+  margin-right: auto;
+}
+
+@media (prefers-color-scheme: light) {
+  .toolbar-dropper img,
+  .toolbar-upload_image img {
+    filter: none;
+  }
+}

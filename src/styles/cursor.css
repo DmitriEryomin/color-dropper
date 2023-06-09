@@ -1,0 +1,45 @@
+.cursor {
+  width: var(--cursor-size);
+  height: var(--cursor-size);
+  box-shadow: 0 0 0 8px #dddddd;
+  border-radius: 50%;
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+  cursor: none;
+  left: 0;
+  top: 0;
+  line-height: 140px;
+  font-size: 0.8rem;
+  user-select: none;
+  font-weight: bold;
+}
+
+.cursor canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: -1;
+  /* opacity: 0.5; */
+}
+
+.cursor span {
+  color: black;
+  padding: 0.1rem;
+  border-radius: 0.1rem;
+  background-color: #dddddd;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border: 1px solid #dddddd;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+}
