@@ -92,7 +92,7 @@ label:focus-visible {
 
 canvas.custom-cursor {
   /* not working :( */
-  /* cursor: url('./assets/cursor.svg'), url('./assets/cursor.png'), none; */
+  cursor: url('./assets/cursor.svg'), url('./assets/cursor.png'), none;
 }
 
 @media (prefers-color-scheme: light) {
