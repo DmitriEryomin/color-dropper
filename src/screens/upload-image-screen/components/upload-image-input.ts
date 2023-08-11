@@ -1,5 +1,5 @@
-import { ImageService } from '../../../services/image-service';
-import { AppElement, InteractiveAppElement } from '../../../types';
+import { AppElement } from '../../../types';
+import { UploadImageInput } from '../../../components/upload-image-input';
 
 export class UploadImageInputContainer implements AppElement<HTMLDivElement> {
   element: HTMLDivElement;
@@ -31,29 +31,6 @@ class UploadImageInputLabel implements AppElement<HTMLLabelElement> {
   }
   render(): void {
     this.children.render();
-    this.parent.appendChild(this.element);
-  }
-}
-
-class UploadImageInput implements InteractiveAppElement<HTMLInputElement> {
-  element: HTMLInputElement;
-  parent: Node;
-
-  constructor(parent: Node) {
-    this.parent = parent;
-    this.element = document.createElement('input');
-    this.element.type = 'file';
-    this.setupEvents();
-  }
-
-  setupEvents(): void {
-    this.element.onchange = (event) => {
-      const [firstFile] = (event.target as HTMLInputElement).files!;
-
-      ImageService.upload(firstFile);
-    };
-  }
-  render(): void {
     this.parent.appendChild(this.element);
   }
 }

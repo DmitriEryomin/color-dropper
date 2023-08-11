@@ -1,15 +1,13 @@
-import { Canvas, Toolbar, ColorDropper } from '../screens/canvas-screen';
-
-import { UploadImageScreen } from '../screens/upload-image-screen/upload-image-screen';
+import { Canvas, ColorDropper, Toolbar } from '../screens/canvas-screen';
+import { UploadImageScreen } from '../screens/upload-image-screen';
 import UIContainer from './ui-container';
 
-export class ImageService {
-  static upload(file: File) {
-    if (UIContainer.get('Canvas')) {
-      const canvas = UIContainer.get<Canvas>('Canvas')!;
-      canvas.img = file;
-    }
-  
+export class ScreenService {
+  static initializeImageUpload() {
+    UIContainer.add(new UploadImageScreen(UIContainer.root)).render();
+  }
+
+  static initializeCanvas(file: File) {
     const element = UIContainer.get<UploadImageScreen>('UploadImageScreen')!;
     element.remove();
 
