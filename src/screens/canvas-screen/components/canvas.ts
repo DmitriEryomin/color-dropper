@@ -1,6 +1,5 @@
 import rgbHex from 'rgb-hex';
 
-import { state } from '../../../state';
 import { InteractiveAppElement } from '../../../types';
 import UIContainer from '../../../services/ui-container';
 import { canvasMaxHeight, canvasMaxWidth } from '../../../state/constants';
@@ -12,6 +11,7 @@ export class Canvas implements InteractiveAppElement<HTMLCanvasElement> {
   element: HTMLCanvasElement;
   parent: Node;
   #img: HTMLImageElement;
+  #dropperMode: boolean = false;
 
   get img(): HTMLImageElement {
     return this.#img;
@@ -61,11 +61,14 @@ export class Canvas implements InteractiveAppElement<HTMLCanvasElement> {
     context.drawImage(this.img, 0, 0, this.element.width, this.element.height);
   }
 
-  setupEvents(): void {
-    console.log('onclick');
+  toggleDropperMode(): void {
+    this.#dropperMode = !this.#dropperMode;
+    this.element.classList.toggle('custom-cursor');
+  }
 
+  setupEvents(): void {
     this.element.onclick = (event) => {
-      if (!state.dropperMode) {
+      if (!this.#dropperMode) {
         return;
       }
 
@@ -79,13 +82,13 @@ export class Canvas implements InteractiveAppElement<HTMLCanvasElement> {
     }
 
     this.element.onmouseover = () => {
-      if (state.dropperMode) {
+      if (this.#dropperMode) {
         UIContainer.get<ColorDropper>('ColorDropper')?.render();
       }
     };
 
     this.element.onmousemove = (event) => {
-      if (!state.dropperMode) {
+      if (!this.#dropperMode) {
         return;
       }
       const cursor = UIContainer.get<ColorDropper>('ColorDropper');
@@ -106,7 +109,7 @@ export class Canvas implements InteractiveAppElement<HTMLCanvasElement> {
     };
 
     this.element.onmouseout = () => {
-      if (state.dropperMode) {
+      if (this.#dropperMode) {
         UIContainer.get<ColorDropper>('ColorDropper')?.remove();
       }
     };

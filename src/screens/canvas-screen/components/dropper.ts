@@ -1,5 +1,7 @@
-import { state } from '../../../state';
+import { Canvas } from './canvas';
 import { InteractiveAppElement } from '../../../types';
+import UIContainer from '../../../services/ui-container';
+
 import colorPickerIcon from '../../../assets/color-picker.svg';
 
 export class Dropper implements InteractiveAppElement<HTMLButtonElement> {
@@ -15,12 +17,9 @@ export class Dropper implements InteractiveAppElement<HTMLButtonElement> {
   }
   setupEvents(): void {
     this.element.onclick = () => {
-      state.toggleDropperMode();
       this.element.classList.toggle('toggle-mode');
 
-      // TODO
-      const canvas = document.querySelector<HTMLCanvasElement>('#canvas')!;
-      canvas.classList.toggle('custom-cursor');
+      UIContainer.get<Canvas>('Canvas')?.toggleDropperMode();
     };
   }
   render(): void {
