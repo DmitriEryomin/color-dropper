@@ -12,10 +12,11 @@ export class ScreenService {
     element.remove();
 
     const toolbar = UIContainer.add(new Toolbar(UIContainer.root));
-    toolbar.render();
     const canvas = UIContainer.add(new Canvas(UIContainer.root));
+    UIContainer.add(new ColorDropper(UIContainer.root));
+    
+    toolbar.render();
     canvas.img = file;
     canvas.render();
-    UIContainer.add(new ColorDropper(UIContainer.root));
   }
 }

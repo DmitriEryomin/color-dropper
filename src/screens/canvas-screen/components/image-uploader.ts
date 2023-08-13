@@ -1,7 +1,7 @@
+import uploadIcon from '../../../assets/file-upload.svg';
+import { ImageService } from '../../../services/image-service';
 import { AppElement, InteractiveAppElement } from '../../../types';
 import { UploadImageInput } from '../../../components/upload-image-input';
-
-import uploadIcon from '../../../assets/file-upload.svg';
 
 export class ImageUploader implements AppElement<HTMLLabelElement> {
   element: HTMLLabelElement;
@@ -12,7 +12,7 @@ export class ImageUploader implements AppElement<HTMLLabelElement> {
     this.parent = parent;
     this.element = document.createElement('label');
     this.element.classList.add('toolbar-upload_image');
-    this.children = new UploadImageInput(this.element);
+    this.children = new UploadImageInput(this.element, ImageService.upload);
   }
   render(): void {
     this.element.innerHTML = `<img width="16px" height="16px" src="${uploadIcon}" />`;

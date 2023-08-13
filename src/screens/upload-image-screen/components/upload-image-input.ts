@@ -1,4 +1,5 @@
 import { AppElement } from '../../../types';
+import { ScreenService } from '../../../services/screen-service';
 import { UploadImageInput } from '../../../components/upload-image-input';
 
 export class UploadImageInputContainer implements AppElement<HTMLDivElement> {
@@ -27,7 +28,7 @@ class UploadImageInputLabel implements AppElement<HTMLLabelElement> {
     this.parent = parent;
     this.element = document.createElement('label');
     this.element.textContent = 'Upload';
-    this.children = new UploadImageInput(this.element);
+    this.children = new UploadImageInput(this.element, ScreenService.initializeCanvas);
   }
   render(): void {
     this.children.render();

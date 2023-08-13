@@ -6,5 +6,5 @@ export interface AppElement<T = Node> {
 }
 
 export interface InteractiveAppElement<T extends Node> extends AppElement<T> {
-  setupEvents(): void;
+  setupEvents(effect?: Function): void;
 }
